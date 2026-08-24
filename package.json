@@ -1,0 +1,12 @@
+{
+  "name": "novo-ai-open-source",
+  "version": "0.1.0",
+  "private": true,
+  "license": "AGPL-3.0-only",
+  "scripts": {
+    "build:landing": "npm --prefix apps/landing run build",
+    "build:studio": "npm --prefix apps/studio run build",
+    "build": "npm run build:landing && npm run build:studio",
+    "check:studio": "npm --prefix apps/studio run check"
+  }
+}
