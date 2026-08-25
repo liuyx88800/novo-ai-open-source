@@ -14,9 +14,9 @@ $patterns = [ordered]@{
 }
 
 $files = @(
-    Get-ChildItem -LiteralPath $scanRoot -Recurse -File |
+    & git -C $scanRoot ls-files |
+        ForEach-Object { Get-Item -LiteralPath (Join-Path $scanRoot $_) } |
         Where-Object {
-            $_.FullName -notmatch "\\(node_modules|dist|\.git)\\" -and
             $_.Extension -notmatch "^\.(png|jpg|jpeg|gif|webp|ico|woff|woff2|ttf|mp4|mov|zip|tgz|gz)$"
         }
 )
