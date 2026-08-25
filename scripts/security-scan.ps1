@@ -15,7 +15,7 @@ $patterns = [ordered]@{
 
 $files = @(
     & git -C $scanRoot ls-files |
-        ForEach-Object { Get-Item -LiteralPath (Join-Path $scanRoot $_) } |
+        ForEach-Object { Get-Item -LiteralPath (Join-Path $scanRoot $_) -Force } |
         Where-Object {
             $_.Extension -notmatch "^\.(png|jpg|jpeg|gif|webp|ico|woff|woff2|ttf|mp4|mov|zip|tgz|gz)$"
         }
